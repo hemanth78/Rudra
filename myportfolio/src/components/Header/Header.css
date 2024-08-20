@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  color: #333;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -11,7 +10,7 @@
 
 .logo>a{
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-size: 24px;
   font-weight: bold;
 }
@@ -25,7 +24,7 @@
 .nav-links a,
 .nav-links-mobile a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-weight: bold;
   padding: 5px 10px;
 }

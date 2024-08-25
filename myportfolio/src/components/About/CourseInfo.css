@@ -1,0 +1,40 @@
+.course-info {
+  display: flex;
+  flex-direction: column; /* Stack courses vertically */
+  gap: 1rem; /* Space between course items */
+  padding: 0 10%;
+  height: 100vh;
+}
+
+.course-info h1{
+  font-size: 4rem;
+}
+
+.course-info__item {
+  display: flex;
+  justify-content: space-between; /* Space between name and details */
+  padding: 1rem 0; /* Padding for spacing between items */
+  border-bottom: 1px solid #ddd; /* Optional: add a separator between courses */
+}
+
+.course-info__name {
+  flex: 2; /* Takes up larger space */
+  font-size: 3rem; /* Adjust font size as needed */
+  font-weight: bold; /* Optional: make name bold */
+}
+
+.course-info__details {
+  display: flex;
+  flex-direction: column; /* Stack provider and year vertically */
+  align-items: flex-end; /* Align details to the end */
+}
+
+.course-info__provider {
+  font-size: 2rem; /* Adjust font size as needed */
+  color: #555; /* Optional: change text color */
+}
+
+.course-info__year {
+  font-size: 2rem; /* Adjust font size as needed */
+  color: #888; /* Optional: change text color */
+}

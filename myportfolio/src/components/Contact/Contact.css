@@ -1,0 +1,62 @@
+.contact {
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  justify-content: center; /* Center content vertically */
+  padding: 0 10%; /* Horizontal padding */
+  box-sizing: border-box; /* Include padding in height calculations */
+}
+
+.contact__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.contact__heading {
+  font-size: 2.5rem; /* Increase the font size */
+  margin: 0;
+}
+
+.contact__title {
+  font-size: 4rem; /* Adjust font size as needed */
+  margin: 0;
+}
+
+.contact__info {
+  display: flex;
+  justify-content: space-between; /* Space between email and social media */
+  width: 100%; /* Full width to align items correctly */
+  margin-top: 1rem; /* Space above social icons */
+}
+
+.contact__email {
+  font-size: 1.25rem;
+  color: #ddd; /* LinkedIn color for consistency */
+  text-decoration: none;
+}
+
+.contact__social {
+  display: flex;
+  gap: 3rem; /* Space between social icons */
+}
+
+.contact__social-link i {
+  color: #ddd;
+  font-size: 2rem;
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.contact__social-link:nth-child(1):hover i {
+  color: #0077b5; /* LinkedIn blue color on hover */
+}
+
+.contact__social-link:nth-child(2):hover i {
+  color: #e4405f; /* Instagram pink color on hover */
+}
+
+.contact__divider {
+  border-top: 1px solid #ddd; /* Light gray divider */
+  margin-top: 4rem;
+}

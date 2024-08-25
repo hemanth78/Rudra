@@ -1,0 +1,27 @@
+.skills-table {
+  display: flex;
+  justify-content: center; /* Center the table horizontally */
+  padding: 0 10%; /* Add some padding */
+}
+
+.skills-table__table {
+  width: 100%;
+  border-collapse: collapse; /* Remove space between table cells */
+}
+
+.skills-table__table th,
+.skills-table__table td {
+  font-size: 4rem;
+  padding: 1.5rem; /* Add padding for table cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 1px solid #ddd; /* Add a bottom border for rows */
+}
+
+.skills-table__table th {
+  font-weight: bold; /* Bold font for header */
+}
+
+.highlighted-skill {
+  color: #ff5733; /* Change this to the color you want */
+  font-weight: bold; /* Optional: make it bold for emphasis */
+}

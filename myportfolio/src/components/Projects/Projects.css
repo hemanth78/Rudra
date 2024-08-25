@@ -1,0 +1,102 @@
+.projects-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  overflow: hidden; /* Prevent overflow */
+  position: relative; /* Relative positioning for pagination */
+}
+
+/* Swiper specific container styling */
+.swiper-container {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+/* Swiper wrapper to manage flex properties */
+.swiper-wrapper {
+  display: flex; /* Flex display for slides */
+}
+
+/* Swiper slide styling */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+}
+
+/* Styling for project card displayed on each slide */
+.project-card {
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* Ensures the image covers the entire area without distortion */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease; /* Adds a smooth transition effect */
+}
+
+.project-card h2 {
+  font-size: 4rem; /* Title font size */
+  color: white; /* Title color */
+  margin-bottom: 15px; /* Spacing below title */
+  font-weight: bolder; /* Bold title */
+}
+
+.project-card p {
+  font-size: 16px; /* Paragraph font size */
+  color: white; /* Paragraph color */
+  margin-bottom: 10px; /* Spacing below paragraphs */
+  font-weight: bolder; /* Bold title */
+}
+
+.project-card ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Reset padding */
+  margin: 20px 0; /* Vertical margins */
+  text-align: left; /* Left align text */
+}
+
+.project-card ul li {
+  margin-bottom: 8px; /* Spacing below each list item */
+  color:white; /* List item color */
+  font-size: 16px; /* List item font size */
+  font-weight: bold; /* Bold title */
+}
+
+.project-card strong {
+  color:thistle; /* Highlight color */
+  font-weight:bolder; /* Medium boldness */
+}
+
+/* Pagination styling for Swiper */
+.swiper-pagination {
+  position: absolute; /* Absolute positioning within container */
+  bottom: 10px; /* Position near bottom */
+  transform: translateX(0); /* Center horizontally */
+  z-index: 10; /* Above other content */
+}
+
+/* Swiper pagination bullet styling */
+.swiper-pagination-bullet {
+  background-color: #007bff; /* Base bullet color */
+  opacity: 0.7; /* Slight transparency */
+  width: 12px; /* Bullet size */
+  height: 12px; /* Bullet size */
+  margin: 5px !important; /* Consistent spacing */
+}
+
+/* Active pagination bullet styling */
+.swiper-pagination-bullet-active {
+  background-color: #0056b3; /* Darker color for active bullet */
+  opacity: 1; /* Fully opaque */
+}

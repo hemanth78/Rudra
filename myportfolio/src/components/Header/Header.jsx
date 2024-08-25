@@ -1,58 +1,74 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import logo from './Logo.svg'
 
 const Header = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuFullyOpen, setIsMenuFullyOpen] = useState(false);
+  const [animateLinks, setAnimateLinks] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [navbarClass, setNavbarClass] = useState("navbar-slide-down");
 
-  // Update window width on resize
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Toggle menu open/close for mobile view
   const toggleMenu = useCallback(() => {
-    setIsMenuOpen((prevState) => !prevState);
+    setIsMenuOpen((prev) => !prev);
   }, []);
 
-  // Render links based on window width
-  const renderLinks = () => (
-    <>
-      <Link to="/" onClick={isMenuOpen ? toggleMenu : null}>
-        Home
-      </Link>
-      <Link to="/about" onClick={isMenuOpen ? toggleMenu : null}>
-        About
-      </Link>
-      <Link to="/projects" onClick={isMenuOpen ? toggleMenu : null}>
-        Projects
-      </Link>
-      <Link to="/contact" onClick={isMenuOpen ? toggleMenu : null}>
-        Contact
-      </Link>
-    </>
-  );
+  useEffect(() => {
+    document.body.classList.toggle("no-scroll", isMenuOpen);
+    setNavbarClass(isMenuOpen ? "navbar-menu-open" : "navbar-slide-down");
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isMenuOpen) {
+        setNavbarClass(window.scrollY > lastScrollY ? "navbar-slide-up" : "navbar-slide-down");
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMenuOpen]);
+
+  const handleTransitionEnd = useCallback(() => {
+    setIsMenuFullyOpen(isMenuOpen);
+    setAnimateLinks(isMenuOpen);
+  }, [isMenuOpen]);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  const navLinks = [
+    { path: "/", name: "Home" },
+    { path: "/about", name: "About" },
+    { path: "/projects", name: "Projects" },
+    { path: "/contact", name: "Contact" },
+  ];
 
   return (
-    <nav className="navbar">
-      <div className="logo">
-        <Link to="/">My Portfolio</Link>
+    <>
+      <nav className={`navbar ${navbarClass}`}>
+        <div className="navbar-logo">
+          <Link to="/"><img className="logo" src={logo} alt="" /></Link>
+        </div>
+        <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle navigation">
+          &#9776;
+        </button>
+      </nav>
+      <div className={`navbar-overlay ${isMenuOpen ? "open" : ""}`} onClick={closeMenu} onTransitionEnd={handleTransitionEnd}>
+        <div
+          className={`navbar-links ${isMenuFullyOpen ? "show-links" : ""} ${animateLinks ? "animate-links" : ""}`}
+          onClick={(e) => e.stopPropagation()}>
+          {navLinks.map((link, index) => (
+            <Link key={link.name} to={link.path} onClick={closeMenu} style={{ animationDelay: `${index * 0.3}s` }}>
+              {link.name}
+            </Link>
+          ))}
+        </div>
       </div>
-      {windowWidth > 768 ? (
-        <div className="nav-links">{renderLinks()}</div>
-      ) : (
-        <>
-          <div className="nav-toggle-button" onClick={toggleMenu}>
-            &#9776;
-          </div>
-          {isMenuOpen && <div className="nav-links-mobile">{renderLinks()}</div>}
-        </>
-      )}
-    </nav>
+    </>
   );
 };
 

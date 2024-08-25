@@ -1,0 +1,74 @@
+.about {
+  overflow: hidden; /* Hide overflow to create a seamless effect */
+  color: aliceblue;
+}
+
+.scroll-container {
+  display: flex; /* Arrange text lines vertically */
+  flex-direction: column; /* Stack lines vertically */
+  justify-content: center;
+  width: 100%; /* Full width to allow continuous scrolling */
+  height: 100vh;
+}
+
+.scroll-text {
+  opacity: 0.1;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 6rem;
+  font-weight: bolder;
+  position: relative;
+  padding-bottom: 20px; /* Adjust the value as needed */
+}
+
+/* Keyframes for scrolling animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  } /* Start fully on the right */
+  100% {
+    transform: translateX(-50%);
+  } /* End fully on the left */
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  } /* Start fully on the left */
+  100% {
+    transform: translateX(0);
+  } /* End fully on the right */
+}
+
+.scroll-text.odd {
+  animation: scroll-left 35s linear infinite; /* Scroll from right to left */
+}
+
+.scroll-text.even {
+  animation: scroll-right 35s linear infinite; /* Scroll from left to right */
+}
+
+.about__content,
+.about__learning-journey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  height: 100vh;
+}
+
+.about__content p,
+.about__content h4,
+.about__learning-journey p,
+.about__learning-journey h2 {
+  margin: 10px;
+}
+
+.about__content > h4 {
+  font-size: 1.5vw;
+}
+
+.about__content > p,
+.about__learning-journey > p {
+  font-size: 3vw;
+}
